@@ -19,7 +19,7 @@ This is a basic spring boot application for showcasing intermittent non unique w
 
 4. The main application file is: com.rss.queue.QueueApplication
      1. We use this class to actually build/insert records into the delayed_work table and then starting the Coworker Manager to process those records.
-     2. The NUMBER_OF_JOBS variable controls how many records we want to create in the delayed_work table. This is currently set to 50.
+     2. The NUMBER_OF_JOBS variable controls how many records we want to create in the delayed_work table.
 
 5. The sample job class is: com.rss.queue.job.EchoJob
   This is our sample BackgroundJavaWork which simply echo's a message and then finishes it's work.
@@ -37,5 +37,5 @@ Once you run the application, search the logs for the string "Running com.rss.qu
 Important Notes:
    1. Before running the application, make sure your tables exist and your application.yml is using correct DB configurations (url, username, password).
    2. Because the call to start the Coworker Manager takes over the main thread, you will have to kill the process manually after you're done with it.
-   3. Included screenshot "./LogsScreenshot.png" shows logs with this issue. Record with state 09 was processed twice.
+   3. Included screenshot "./LogsScreenshot.png" shows logs with this issue (target records highlighted).
 
