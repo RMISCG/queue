@@ -1,0 +1,20 @@
+server:
+  default-time-zone: UTC
+  servlet:
+    context-path: /rss/queue
+
+hostname: ${HOSTNAME:localhost:8080}
+versionNumber: 1.0
+serviceName: RSS Queue Service
+
+spring:
+  datasource:
+    url: DB_URL
+    username: DB_USER_NAME
+    password: DB_PASSWORD
+
+logging:
+  level:
+    io:
+      kungfury:
+        coworker: WARN
