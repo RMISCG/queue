@@ -27,10 +27,10 @@ This is a basic spring boot application for showcasing intermittent non unique w
 
 ### Running the application (clean, build, run)
 1. Clone the project locally.
-1. cd into the parent directory.
-2. To clean the project execute command: ./gradlew clean
-3. To build the project execute command: ./gradlew build
-4. To run the project execute command: ./gradlew bootRun
+2. cd into the parent directory.
+3. To clean the project execute command: ./gradlew clean
+4. To build the project execute command: ./gradlew build
+5. To run the project execute command: ./gradlew bootRun
 
 Once you run the application, search the logs for the string "Running com.rss.queue.job.EchoJob with state" and you will notice that sometimes, this is intermittent and doesn't happen all the time, but you will notice that sometimes the same state (record) is processed more than once. Again, this is intermittent. So you might have to run the application a bunch of times before you encounter this scenario.
 
