@@ -7,7 +7,8 @@ This is a basic spring boot application for showcasing intermittent non unique w
 
 ### Basic structure / configuration
 1. The main application build file is: ./build.gradle (obviously Gradle is the build tool here)
-  This file contains basic information about the application as well as dependencies (mainly Spring Boot and Java).
+    1. This file contains basic information about the application.
+    2. Also contains dependencies references (mainly Spring Boot and Java).
 
 2. The main application configuration file is: src.main.resources.application.yml
     1. Default time zone set to UTC
@@ -15,14 +16,16 @@ This is a basic spring boot application for showcasing intermittent non unique w
     3. Logging Level configurations: I have set the level of logging for anything under io.kungfury.coworker to WARN to reduce the "noise".
 
 3. The coworker specific configuration file is: com.rss.queue.config.CoworkerConfiguration
-    We use this class to create the spring beans that are necessary to integrate with Coworker.
+    1. This class creates the spring beans that are necessary to integrate with Coworker.
+    2. The THREADS variable controls the number of threads to spawn. 
 
 4. The main application file is: com.rss.queue.QueueApplication
-     1. We use this class to actually build/insert records into the delayed_work table and then starting the Coworker Manager to process those records.
-     2. The NUMBER_OF_JOBS variable controls how many records we want to create in the delayed_work table.
+    1. We use this class to actually build/insert records into the delayed_work table and then starting the Coworker Manager to process those records.
+    2. The NUMBER_OF_JOBS variable controls how many records we want to create in the delayed_work table.
 
 5. The sample job class is: com.rss.queue.job.EchoJob
-  This is our sample BackgroundJavaWork which simply echo's a message and then finishes it's work.
+    1. A sample BackgroundJavaWork which simply echo's a message and then finishes it's work.
+    2. It also attempts to handle failure scenarios by marking the work as failed and creating a record in the failed_work table.
 
 
 ### Running the application (clean, build, run)
